@@ -1,4 +1,7 @@
 
+
+$(function() {
+	
 // Add shopping item
 
 $('#js-shopping-list-form').submit(function(event) {
@@ -20,4 +23,6 @@ $(document).on('click', 'button.shopping-item-delete',function(event){
 
 $(document).on('click', "button.shopping-item-toggle", function(event){
 	$(this).parent().siblings(".shopping-item").toggleClass("shopping-item__checked");
+})
+
 })

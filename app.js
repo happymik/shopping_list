@@ -1,24 +1,23 @@
 
-//add new item to the shopping list
-// PROBLEM: I do not manage to insert two buttons after the variable with the user input 
+// Add shopping item
 
 $('#js-shopping-list-form').submit(function(event) {
-            event.preventDefault();
-            var userinput = $('#shopping-list-entry').val();
-            $('.shopping-list').append('<li>'+userinput+'</li>');
-                $('#shopping-list-entry').val('');
-            })
+    event.preventDefault();
+    var userinput = $('#shopping-list-entry').val();
+    $('.shopping-list').append('<li><span class="shopping-item">'+userinput+'</span><div class="shopping-item-controls"><button class="shopping-item-toggle">check</button> <button class="shopping-item-delete">delete</button></div></li>');
+    $('#shopping-list-entry').val('')             
+})
+	
 
-//// by clicking delete button user deletes the shopping item
-//// PROBLEM: only deleting existing lists
+// Delete shoppingItem
 
-$("button.shopping-item-delete").click(function(event){
-	$("ul li:first").remove();
+$(document).on('click', 'button.shopping-item-delete',function(event){
+	$(this).parent().parent().remove();
 })
 
-////cross-check the item by pressing the button "check"
-/// PROBLEM: DOM is modified on other objects too
 
-$("button.shopping-item-toggle").click(function(event){
-	$("span.shopping-item").toggleClass("shopping-item__checked");
+// Strike-trhough  shopping item
+
+$(document).on('click', "button.shopping-item-toggle", function(event){
+	$(this).parent().siblings(".shopping-item").toggleClass("shopping-item__checked");
 })
